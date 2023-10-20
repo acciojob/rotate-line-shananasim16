@@ -1,16 +1,36 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Line</title>
+    <style>
+        #line {
+            width: 200px;
+            height: 2px;
+            background-color: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0% 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <div id="line"></div>
+    <script>
+        const line = document.getElementById('line');
+        let angle = 0;
 
+        function rotateLine() {
+            angle += 2;
+            line.style.transform = `translateX(-50%) translateY(-50%) rotate(${angle}deg)`;
+            requestAnimationFrame(rotateLine);
+        }
+
+        // Start the rotation
+        rotateLine();
+    </script>
 </body>
-
 </html>
